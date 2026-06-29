@@ -1253,7 +1253,11 @@ class GromacsTopologyFile(Structure, TopFromStructureMixin, metaclass=FileFormat
             cmap_atom_types = sum([key for key in params.cmap_types], ())
             cmaptypes_w_res  = all(['-' in at for at in cmap_atom_types])
             cmaptypes_wo_res = all(['-' not in at for at in cmap_atom_types])
-            assert cmaptypes_w_res or cmaptypes_wo_res
+            
+            try:
+                assert cmaptypes_w_res or cmaptypes_wo_res
+            except AssertionError:
+                raise ParameterError("All cmaps should be defined either with or without residues."
 
             if cmaptypes_wo_res:
                 # Original behavior
