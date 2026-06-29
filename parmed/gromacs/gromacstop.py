@@ -1257,7 +1257,7 @@ class GromacsTopologyFile(Structure, TopFromStructureMixin, metaclass=FileFormat
             try:
                 assert cmaptypes_w_res or cmaptypes_wo_res
             except AssertionError:
-                raise ParameterError("All cmaps should be defined either with or without residues."
+                raise ParameterError("All cmaps should be defined either with or without residues.")
 
             if cmaptypes_wo_res:
                 # Original behavior
